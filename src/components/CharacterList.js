@@ -6,10 +6,8 @@ export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
   const [chars, setChars] = useState([]);
   let apiString = `https://rickandmortyapi.com/api/character/`;
-  console.log(props);
 
   if (props.query) {
-    console.log(props.query);
     apiString = `https://rickandmortyapi.com/api/character/?name=${props.query}`;
   }
 
@@ -17,7 +15,6 @@ export default function CharacterList(props) {
     axios
       .get(apiString)
       .then(res => {
-        console.log(res);
         setChars(...chars, res.data.results);
       })
       .catch(err => {
