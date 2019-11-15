@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CharacterCard from "./CharacterCard";
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -22,7 +23,14 @@ export default function CharacterList() {
       <h2>List of Characters</h2>
       {chars
         ? chars.map(char => {
-            return <div>{char.name}</div>;
+            return (
+              <CharacterCard
+                name={char.name}
+                image={char.image}
+                origin={char.origin.name}
+                status={char.status}
+              />
+            );
           })
         : "no characters"}
     </section>
