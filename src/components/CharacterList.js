@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
+import styled from "styled-components";
+
+const SubHeader = styled.h1`
+  color: blue;
+  text-align: center;
+`;
 
 export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
@@ -24,7 +30,7 @@ export default function CharacterList(props) {
 
   return (
     <section className="character-list">
-      <h2>List of Characters</h2>
+      <SubHeader>List of Characters</SubHeader>
       {chars
         ? chars.map(char => {
             return (
