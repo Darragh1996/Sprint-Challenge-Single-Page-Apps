@@ -2,13 +2,20 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
 
-export default function CharacterList() {
+export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
   const [chars, setChars] = useState([]);
+  let apiString = `https://rickandmortyapi.com/api/character/`;
+  console.log(props);
+
+  if (props.query) {
+    console.log(props.query);
+    apiString = `https://rickandmortyapi.com/api/character/?name=${props.query}`;
+  }
 
   useEffect(() => {
     axios
-      .get("https://rickandmortyapi.com/api/character/")
+      .get(apiString)
       .then(res => {
         console.log(res);
         setChars(...chars, res.data.results);
